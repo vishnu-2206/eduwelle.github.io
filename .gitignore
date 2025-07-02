@@ -2,7 +2,7 @@
 node_modules/
 
 # Eleventy output
-docs/blog/
+!docs/blog/
 
 # System files
 .DS_Store
