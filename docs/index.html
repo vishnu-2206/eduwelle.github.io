@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EduWelle Labs - Empowering Innovation in Education and Technology" />
+  <meta name="keywords" content="EduWelle, education, research, academic projects, mentorship, technology solutions, computational research, AI, IoT, thesis help" />
+  <meta name="author" content="EduWelle Labs" />
+  <meta property="og:title" content="EduWelle Labs" />
+  <meta property="og:description" content="Empowering Innovation in Education through Research, Mentorship, and Technology Solutions." />
+  <meta property="og:image" content="https://eduwelle.com/logo.png" />
+  <meta property="og:url" content="https://eduwelle.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>EduWelle Labs</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    /* Logo Video Modal Overlay */
+    #logoModal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #logoModal video {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .logo {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader"><div class="loader"></div></div>
+
+  <!-- Logo Modal -->
+  <div id="logoModal">
+    <video id="logoVideo" muted autoplay playsinline>
+      <source src="logo-reveal.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger">
+    <nav>
+	  <a href="#about">About</a>
+	  <a href="#services">Services</a>
+	  <a href="#projects">Projects</a>
+	  <a href="#contact">Contact</a>
+	  <a href="/blog/">Blog</a>
+	</nav>
+    <label class="switch" title="Toggle Dark Mode">
+      <input type="checkbox" id="darkToggle">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>EduWelle Labs</h1>
+    <p>Empowering Innovation in Education through Research, Mentorship, and Technology Solutions.</p>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in Touch</button>
+  </section>
+
+  <!-- Sections -->
+  <section class="section" id="about" data-aos="fade-up">
+    <h2 data-aos="fade-right">About Us</h2>
+    <p data-aos="fade-up">EduWelle Labs is a next-gen academic and R&D project center focused on transforming educational innovation through hands-on projects, technical mentorship, and computational research.</p>
+  </section>
+
+  <section class="section" id="services" data-aos="fade-up">
+    <h2 data-aos="fade-right">Our Services</h2>
+    <div class="services">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+        <h3>Academic Mentoring</h3>
+        <p>Expert guidance on academic projects, documentation, and thesis writing.</p>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+        <h3>Research Consulting</h3>
+        <p>Support in design, simulation, coding, and paper publishing.</p>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+        <h3>Full-Stack Projects</h3>
+        <p>Projects in web, app, IoT, and embedded systems.</p>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+        <h3>Bootcamps</h3>
+        <p>Hands-on training in emerging technologies.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" data-aos="fade-up">
+    <h2 data-aos="fade-right">Featured Projects</h2>
+    <p data-aos="fade-up">Coming soon: AI models, environmental sensors, healthcare devices, and more.</p>
+  </section>
+
+  <section class="section" id="testimonials" data-aos="fade-up">
+    <h2 data-aos="fade-right">What People Say</h2>
+    <div class="testimonials">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+        <p>"EduWelle helped me publish my first research paper. Incredible mentorship!"</p>
+        <h4>— Suchanya</h4>
+      </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+        <p>"Excellent AI and Python training. Highly recommend!"</p>
+        <h4>— Ganesh M</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" data-aos="fade-up">
+    <h2 data-aos="fade-right">Contact Us</h2>
+    <form class="contact-form" action="https://getform.io/f/avrylyea" method="POST" data-aos="fade-up">
+      <input type="text" name="_gotcha" style="display:none">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <input type="hidden" name="_redirect" value="https://eduwelle.com/thanks.html">
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 EduWelle Labs. All rights reserved.</p>
+    <p>Email: info@eduwelle.com</p>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop" title="Back to Top">↑</button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 100 });
+
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkToggle');
+    const prefersDark = localStorage.getItem('dark-mode') === 'true';
+    if (prefersDark) {
+      document.body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('dark-mode', toggle.checked);
+    });
+
+    // Preloader
+    window.addEventListener("load", () => {
+      document.getElementById("preloader").classList.add("hidden");
+    });
+
+    // Back to Top
+    const backToTopBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      backToTopBtn.classList.toggle("show", window.scrollY > 300);
+    });
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Logo Reveal Modal
+    const logo = document.getElementById("logoTrigger");
+    const modal = document.getElementById("logoModal");
+    const video = document.getElementById("logoVideo");
+
+    logo.addEventListener("click", () => {
+      video.src = "logo-reveal.mp4";
+      modal.style.display = "flex";
+      video.play();
+    });
+
+    video.addEventListener("ended", () => {
+      modal.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+      video.src = ""; // Unload to prevent flicker
+    });
+  </script>
+
+</body>
+</html>
