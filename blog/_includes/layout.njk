@@ -5,9 +5,9 @@
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="EduWelle Blog - Insights and Innovation in Education" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="{{ baseurl }}/favicon.ico" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="{{ baseurl }}/style.css">
 </head>
 <body>
 
@@ -16,13 +16,13 @@
 
   <!-- Header -->
   <header class="section">
-    <img src="/logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger">
+    <img src="{{ baseurl }}/logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger">
     <nav>
-      <a href="/#about">About</a>
-      <a href="/#services">Services</a>
-      <a href="/#projects">Projects</a>
-      <a href="/#contact">Contact</a>
-      <a href="/blog/">Blog</a>
+      <a href="{{ baseurl }}/#about">About</a>
+      <a href="{{ baseurl }}/#services">Services</a>
+      <a href="{{ baseurl }}/#projects">Projects</a>
+      <a href="{{ baseurl }}/#contact">Contact</a>
+      <a href="{{ baseurl }}/blog/">Blog</a>
     </nav>
     <label class="switch" title="Toggle Dark Mode">
       <input type="checkbox" id="darkToggle">
