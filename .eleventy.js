@@ -18,9 +18,9 @@ module.exports = function(eleventyConfig) {
 
   return {
     dir: {
-      input: "posts",             // where your Markdown lives
-      includes: "../_includes",   // path to layout.njk
-      output: "../docs/blog"      // final output
+      input: "blog",             // where your Markdown lives
+      includes: "_includes",   // path to layout.njk
+      output: "docs/blog"      // final output
     }
   };
 };
