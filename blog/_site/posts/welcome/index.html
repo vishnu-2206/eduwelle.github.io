@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>Welcome to EduWelle Blog</title>
   <meta name="description" content="EduWelle Blog - Insights, Ideas, and Innovations" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
@@ -27,9 +27,26 @@
   <!-- Preloader -->
   <div id="preloader"><div class="loader"></div></div>
 
+  <!-- Modal Logo Video -->
+  <div id="logoModal">
+    <video id="logoVideo" muted autoplay playsinline>
+      <source src="/logo-reveal.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
   <!-- Main Content -->
   <main class="section" data-aos="fade-up">
-    
+    <p>Welcome to the official <strong>EduWelle Blog</strong>! 🚀</p>
+<p>We’re excited to launch this platform to share insights, updates, and tutorials in the realm of:</p>
+<ul>
+<li>Academic mentoring</li>
+<li>AI and computational research</li>
+<li>Full-stack project development</li>
+<li>IoT, embedded systems, and more</li>
+</ul>
+<p>Stay tuned as we publish case studies, student success stories, research write-ups, and EduWelle bootcamp takeaways. Let’s innovate together.</p>
+
   </main>
 
   <!-- Footer -->
@@ -69,6 +86,20 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
+    const logo = document.getElementById("logoTrigger");
+    const modal = document.getElementById("logoModal");
+    const video = document.getElementById("logoVideo");
+    logo.addEventListener("click", () => {
+      video.src = "/logo-reveal.mp4";
+      modal.style.display = "flex";
+      video.play();
+    });
+    video.addEventListener("ended", () => {
+      modal.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+      video.src = "";
+    });
   </script>
 </body>
 </html>

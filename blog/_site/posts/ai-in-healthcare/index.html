@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>AI in Healthcare — Transforming Diagnosis and Monitoring</title>
   <meta name="description" content="EduWelle Blog - Insights, Ideas, and Innovations" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
@@ -27,9 +27,30 @@
   <!-- Preloader -->
   <div id="preloader"><div class="loader"></div></div>
 
+  <!-- Modal Logo Video -->
+  <div id="logoModal">
+    <video id="logoVideo" muted autoplay playsinline>
+      <source src="/logo-reveal.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
   <!-- Main Content -->
   <main class="section" data-aos="fade-up">
-    
+    <p>Artificial Intelligence (AI) is no longer a futuristic concept in healthcare — it’s here, and it’s already making a difference.</p>
+<h3>Key Areas Where AI is Helping:</h3>
+<ol>
+<li><strong>Medical Imaging</strong>: Detecting tumors, fractures, and anomalies with higher accuracy using CNNs.</li>
+<li><strong>Predictive Analytics</strong>: Forecasting patient deterioration or readmission risk.</li>
+<li><strong>Smart Monitoring</strong>: Wearable sensors powered by AI track vital signs in real time.</li>
+<li><strong>Drug Discovery</strong>: ML models identify drug targets and optimize compounds faster than traditional methods.</li>
+</ol>
+<h3>EduWelle’s Contribution</h3>
+<p>At EduWelle Labs, we're developing AI models and IoT integrations for early disease detection, especially in rural health setups.</p>
+<p>Stay tuned as we release open-source projects, datasets, and student tutorials on these themes.</p>
+<hr>
+<p>📩 Want early access? Email us at <a href="mailto:info@eduwelle.com">info@eduwelle.com</a></p>
+
   </main>
 
   <!-- Footer -->
@@ -69,6 +90,20 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
+    const logo = document.getElementById("logoTrigger");
+    const modal = document.getElementById("logoModal");
+    const video = document.getElementById("logoVideo");
+    logo.addEventListener("click", () => {
+      video.src = "/logo-reveal.mp4";
+      modal.style.display = "flex";
+      video.play();
+    });
+    video.addEventListener("ended", () => {
+      modal.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+      video.src = "";
+    });
   </script>
 </body>
 </html>

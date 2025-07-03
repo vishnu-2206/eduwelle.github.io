@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>Build Your First AI Project in 5 Steps</title>
   <meta name="description" content="EduWelle Blog - Insights, Ideas, and Innovations" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
@@ -27,9 +27,28 @@
   <!-- Preloader -->
   <div id="preloader"><div class="loader"></div></div>
 
+  <!-- Modal Logo Video -->
+  <div id="logoModal">
+    <video id="logoVideo" muted autoplay playsinline>
+      <source src="/logo-reveal.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
   <!-- Main Content -->
   <main class="section" data-aos="fade-up">
-    
+    <p>Starting an AI project doesn’t need to be intimidating. Here's a simple roadmap:</p>
+<ol>
+<li><strong>Define the Problem</strong> – e.g., classification, prediction, clustering</li>
+<li><strong>Collect &amp; Clean Data</strong> – Use public datasets or EduWelle-curated sources</li>
+<li><strong>Choose a Model</strong> – Start with <code>scikit-learn</code>, then explore <code>TensorFlow</code></li>
+<li><strong>Train and Evaluate</strong> – Split your data, test accuracy</li>
+<li><strong>Visualize and Deploy</strong> – Create plots, and optionally deploy with Streamlit</li>
+</ol>
+<p>Join our next bootcamp to get a hands-on walkthrough!</p>
+<hr>
+<p>Would you like a free template? Email us at <a href="mailto:info@eduwelle.com">info@eduwelle.com</a></p>
+
   </main>
 
   <!-- Footer -->
@@ -69,6 +88,20 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
+    const logo = document.getElementById("logoTrigger");
+    const modal = document.getElementById("logoModal");
+    const video = document.getElementById("logoVideo");
+    logo.addEventListener("click", () => {
+      video.src = "/logo-reveal.mp4";
+      modal.style.display = "flex";
+      video.play();
+    });
+    video.addEventListener("ended", () => {
+      modal.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+      video.src = "";
+    });
   </script>
 </body>
 </html>
