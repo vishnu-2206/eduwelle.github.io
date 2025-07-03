@@ -1,23 +1,23 @@
 ---
-title: EduWelle Blog
 layout: layout.njk
+title: EduWelle Blog
 ---
 
 <h1>EduWelle Blog</h1>
-<p style="text-align:center;">Insights, ideas, and updates from the EduWelle Labs team.</p>
+<p class="center-text">Insights, ideas, and updates from the EduWelle Labs team.</p>
 
 <div class="blog-grid">
   {% for post in collections.all | reverse %}
-    {% if post.data.title and post.inputPath.includes("/posts/") and post.data.title != "EduWelle Blog" %}
+    {% if "posts/" in post.inputPath and post.data.title != "EduWelle Blog" %}
       <div class="blog-card">
         {% if post.data.cover %}
-          <img src="{{ post.data.cover }}" alt="{{ post.data.title }}" class="cover">
+          <img src="{{ post.data.cover }}" alt="Cover image" class="cover" />
         {% endif %}
         <div class="card-content">
           <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
           <p class="date">{{ post.date | readableDate }}</p>
-          {% if post.data.excerpt %}
-            <p>{{ post.data.excerpt }}</p>
+          {% if post.templateContent %}
+            <p>{{ post.templateContent | striptags | truncate(160, true, '...') }}</p>
           {% endif %}
           <a href="{{ post.url }}" class="read-more">Read More →</a>
         </div>
@@ -25,5 +25,3 @@ layout: layout.njk
     {% endif %}
   {% endfor %}
 </div>
-
-<p class="back-link"><a href="/">← Back to EduWelle Home</a></p>
