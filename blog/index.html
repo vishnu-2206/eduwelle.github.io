@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduWelle Blog | EduWelle Blog</title>
+  <meta name="description" content="EduWelle Blog" />
+  <link rel="icon" href="/blog/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="/blog/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="/blog/logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger">
+    <nav>
+      <a href="/blog/">Home</a>
+      <a href="/blog/#about">About</a>
+      <a href="/blog/#services">Services</a>
+      <a href="/blog/#projects">Projects</a>
+      <a href="/blog/#contact">Contact</a>
+      <a href="/blog/" class="active">Blog</a>
+    </nav>
+    <label class="switch" title="Toggle Dark Mode">
+      <input type="checkbox" id="darkToggle">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <!-- Main Content -->
+  <main class="section">
+    
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 EduWelle Labs. All rights reserved.</p>
+    <p>Email: info@eduwelle.com</p>
+  </footer>
+
+  <!-- Dark Mode Script -->
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    const prefersDark = localStorage.getItem('dark-mode') === 'true';
+    if (prefersDark) {
+      document.body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('dark-mode', toggle.checked);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.njk" %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+
+  {% if date %}
+    <p><em>{{ date | readableDate }}</em></p>
+  {% endif %}
+
+  <article>
+    {{ content | safe }}
+  </article>
+
+  <a href="{{ '/blog/' | url }}" class="back">← Back to Blog</a>
+{% endblock %}
