@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>EduWille Blog</title>
+  <title>{{ title }}</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -11,9 +11,7 @@
     <a href="/blog/">Blog</a>
   </nav>
   <main>
-    <h1>Welcome to the EduWille Blog</h1>
-<p>Stay updated with our latest articles.</p>
-
+    {{ content | safe }}
   </main>
 </body>
 </html>
