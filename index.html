@@ -15,31 +15,54 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
   <link rel="stylesheet" href="style.css">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ED6K9NJ7K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-4ED6K9NJ7K');
-  </script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    /* Logo Video Modal Overlay */
+    #logoModal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #logoModal video {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .logo {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+
   <!-- Preloader -->
-  <div id="preloader">
-    <div class="loader"></div>
+  <div id="preloader"><div class="loader"></div></div>
+
+  <!-- Logo Modal -->
+  <div id="logoModal">
+    <video id="logoVideo" muted autoplay playsinline>
+      <source src="logo-reveal.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   </div>
 
   <!-- Header -->
   <header>
-    <img src="logo.png" alt="EduWelle Labs Logo" class="logo rotate-hover">
+    <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger">
     <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+	  <a href="#about">About</a>
+	  <a href="#services">Services</a>
+	  <a href="#projects">Projects</a>
+	  <a href="#contact">Contact</a>
+	  <a href="/blog/">Blog</a>
+	</nav>
     <label class="switch" title="Toggle Dark Mode">
       <input type="checkbox" id="darkToggle">
       <span class="slider"></span>
@@ -53,72 +76,53 @@
     <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in Touch</button>
   </section>
 
-  <!-- About -->
+  <!-- Sections -->
   <section class="section" id="about" data-aos="fade-up">
     <h2 data-aos="fade-right">About Us</h2>
-    <p data-aos="fade-up">EduWelle Labs is a next-gen academic and R&D project center focused on transforming educational innovation through hands-on projects, technical mentorship, and computational research. We bridge the gap between curriculum and cutting-edge technologies.</p>
+    <p data-aos="fade-up">EduWelle Labs is a next-gen academic and R&D project center focused on transforming educational innovation through hands-on projects, technical mentorship, and computational research.</p>
   </section>
 
-  <!-- Services -->
   <section class="section" id="services" data-aos="fade-up">
     <h2 data-aos="fade-right">Our Services</h2>
     <div class="services">
       <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
         <h3>Academic Mentoring</h3>
-        <p>Expert guidance on academic projects, technical documentation, and thesis writing.</p>
+        <p>Expert guidance on academic projects, documentation, and thesis writing.</p>
       </div>
       <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
         <h3>Research Consulting</h3>
-        <p>Support in research design, simulation, coding (Python, MATLAB), and paper publishing.</p>
+        <p>Support in design, simulation, coding, and paper publishing.</p>
       </div>
       <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
         <h3>Full-Stack Projects</h3>
-        <p>Project development in web, app, IoT, and embedded systems for real-world applications.</p>
+        <p>Projects in web, app, IoT, and embedded systems.</p>
       </div>
       <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
-        <h3>Workshops & Bootcamps</h3>
-        <p>Hands-on training sessions for students and educators in emerging technologies.</p>
+        <h3>Bootcamps</h3>
+        <p>Hands-on training in emerging technologies.</p>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
   <section class="section" id="projects" data-aos="fade-up">
     <h2 data-aos="fade-right">Featured Projects</h2>
-    <p data-aos="fade-up">Coming soon: Explore our latest work in AI modeling, environmental sensors, healthcare devices, and more!</p>
+    <p data-aos="fade-up">Coming soon: AI models, environmental sensors, healthcare devices, and more.</p>
   </section>
 
-  <!-- Testimonials -->
   <section class="section" id="testimonials" data-aos="fade-up">
     <h2 data-aos="fade-right">What People Say</h2>
     <div class="testimonials">
       <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
         <p>"EduWelle helped me publish my first research paper. Incredible mentorship!"</p>
-        <h4>— Suchanya, BSc Student</h4>
+        <h4>— Suchanya</h4>
       </div>
       <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-        <p>"Excellent hands-on training on AI and Python for real-world problems."</p>
-        <h4>— Ganesh M, BCA Student</h4>
+        <p>"Excellent AI and Python training. Highly recommend!"</p>
+        <h4>— Ganesh M</h4>
       </div>
     </div>
   </section>
 
-  <!-- Blog/Updates -->
-  <section class="section" id="updates" data-aos="fade-up">
-    <h2 data-aos="fade-right">Latest Insights</h2>
-    <div class="blog-preview">
-      <div class="post-card" data-aos="zoom-in">
-        <h3>5 AI Project Ideas for Students in 2025</h3>
-        <p>Explore practical AI projects you can build with limited resources...</p>
-      </div>
-      <div class="post-card" data-aos="zoom-in" data-aos-delay="100">
-        <h3>Publishing Research with EduWelle Labs</h3>
-        <p>See how our guided approach helps students get published in indexed journals.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form -->
   <section class="section" id="contact" data-aos="fade-up">
     <h2 data-aos="fade-right">Contact Us</h2>
     <form class="contact-form" action="https://getform.io/f/avrylyea" method="POST" data-aos="fade-up">
@@ -137,12 +141,15 @@
     <p>Email: info@eduwelle.com</p>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    window.addEventListener("load", function () {
-      document.getElementById("preloader").classList.add("hidden");
-    });
+  <!-- Back to Top -->
+  <button id="backToTop" title="Back to Top">↑</button>
 
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 100 });
+
+    // Dark Mode Toggle
     const toggle = document.getElementById('darkToggle');
     const prefersDark = localStorage.getItem('dark-mode') === 'true';
     if (prefersDark) {
@@ -154,31 +161,36 @@
       localStorage.setItem('dark-mode', toggle.checked);
     });
 
-  </script>
-
-  <!-- AOS -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 100,
+    // Preloader
+    window.addEventListener("load", () => {
+      document.getElementById("preloader").classList.add("hidden");
     });
-  </script>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop" title="Back to Top">↑</button>
-  <script>
+    // Back to Top
     const backToTopBtn = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add("show");
-      } else {
-        backToTopBtn.classList.remove("show");
-      }
+      backToTopBtn.classList.toggle("show", window.scrollY > 300);
     });
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Logo Reveal Modal
+    const logo = document.getElementById("logoTrigger");
+    const modal = document.getElementById("logoModal");
+    const video = document.getElementById("logoVideo");
+
+    logo.addEventListener("click", () => {
+      video.src = "logo-reveal.mp4";
+      modal.style.display = "flex";
+      video.play();
+    });
+
+    video.addEventListener("ended", () => {
+      modal.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+      video.src = ""; // Unload to prevent flicker
     });
   </script>
 
