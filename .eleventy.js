@@ -1,13 +1,13 @@
 const path = require("path");
 
 module.exports = function(eleventyConfig) {
-  // Passthrough from parent to output folder
+  // ✅ Passthrough copy for static assets from parent directory
   eleventyConfig.addPassthroughCopy({ "../style.css": "style.css" });
   eleventyConfig.addPassthroughCopy({ "../logo.png": "logo.png" });
   eleventyConfig.addPassthroughCopy({ "../favicon.ico": "favicon.ico" });
   eleventyConfig.addPassthroughCopy({ "../logo-reveal.mp4": "logo-reveal.mp4" });
 
-  // Add readable date filter
+  // ✅ Add date filter for blog post dates
   eleventyConfig.addFilter("readableDate", function(dateObj) {
     return new Date(dateObj).toLocaleDateString("en-US", {
       year: "numeric",
@@ -16,14 +16,14 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  // Add global data (baseurl for GitHub Pages deployment)
+  // ✅ Add global baseurl (for GitHub Pages deployment under /eduwelle)
   eleventyConfig.addGlobalData("baseurl", "/eduwelle");
 
   return {
     dir: {
-      input: "blog",             // where Markdown and index.njk live
-      includes: "_includes",     // layout.njk location
-      output: "docs/blog"        // final blog build location
+      input: "blog",             // Source: blog directory
+      includes: "_includes",     // Layouts folder (layout.njk)
+      output: "docs/blog"        // Build output path
     }
   };
 };
