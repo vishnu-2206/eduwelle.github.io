@@ -387,3 +387,41 @@ img.logo {
     gap: 1rem;
   }
 }
+
+/* Blog Index Page Styles */
+.blog-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.blog-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.blog-card a {
+  text-decoration: none;
+  color: var(--primary-text);
+  display: block;
+}
+
+.blog-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-text);
+}
+
+.blog-card p {
+  color: var(--primary-text);
+  font-size: 0.95rem;
+}
