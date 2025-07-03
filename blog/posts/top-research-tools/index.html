@@ -27,14 +27,6 @@
   <!-- Preloader -->
   <div id="preloader"><div class="loader"></div></div>
 
-  <!-- Modal Logo Video -->
-  <div id="logoModal">
-    <video id="logoVideo" muted autoplay playsinline>
-      <source src="/logo-reveal.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
   <!-- Main Content -->
   <main class="section" data-aos="fade-up">
     <p>Conducting research as a student is tough — but with the right tools, it becomes a lot easier. Here are 5 must-have tools:</p>
@@ -86,20 +78,6 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    const logo = document.getElementById("logoTrigger");
-    const modal = document.getElementById("logoModal");
-    const video = document.getElementById("logoVideo");
-    logo.addEventListener("click", () => {
-      video.src = "/logo-reveal.mp4";
-      modal.style.display = "flex";
-      video.play();
-    });
-    video.addEventListener("ended", () => {
-      modal.style.display = "none";
-      video.pause();
-      video.currentTime = 0;
-      video.src = "";
-    });
   </script>
 </body>
 </html>
