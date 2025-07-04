@@ -123,8 +123,8 @@
 	<div class="testimonial-carousel-wrapper">
       <button class="arrow left" id="arrowLeft">←</button>
       
-	  <div class="testimonial-carousel">
-        <div class="testimonial-track" id="testimonialTrack">
+	  <div class="testimonial-carousel" id="testimonialCarousel">
+        <div class="testimonial-track">
 		  <!-- testimonial cards here -->
           <div class="testimonial-card">
             <p>"It was a great opportunity to extend my knowledge of ML and its concepts with well-experienced teacher."</p>
@@ -225,25 +225,21 @@
 	
 
 	// ✅ Manual Scroll for Testimonials (ONLY keep this version)
-    document.addEventListener("DOMContentLoaded", () => {
-      const track = document.getElementById("testimonialTrack");
+	document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById("testimonialCarousel");
       const leftBtn = document.getElementById("arrowLeft");
       const rightBtn = document.getElementById("arrowRight");
 
       if (leftBtn && rightBtn && track) {
-        leftBtn.addEventListener("click", () => {
+        const scrollTestimonials = (direction) => {
           const card = track.querySelector(".testimonial-card");
           if (!card) return;
           const scrollAmount = card.offsetWidth + 24;
-          track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-        });
+          track.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+        };
 
-        rightBtn.addEventListener("click", () => {
-          const card = track.querySelector(".testimonial-card");
-          if (!card) return;
-          const scrollAmount = card.offsetWidth + 24;
-          track.scrollBy({ left: scrollAmount, behavior: "smooth" });
-        });
+        leftBtn.addEventListener("click", () => scrollTestimonials(-1));
+        rightBtn.addEventListener("click", () => scrollTestimonials(1));
       }
     });
   </script>
