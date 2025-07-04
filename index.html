@@ -121,7 +121,7 @@
     <h2 data-aos="fade-right">What People Say</h2>
 	
 	<div class="testimonial-carousel-wrapper">
-      <button class="arrow left" onclick="scrollTestimonials(-1)">←</button>
+      <button class="arrow left" id="arrowLeft">←</button>
       
 	  <div class="testimonial-carousel">
         <div class="testimonial-track" id="testimonialTrack">
@@ -149,7 +149,7 @@
         </div>
       </div>
 	  
-	  <button class="arrow right" onclick="scrollTestimonials(1)">→</button>
+	  <button class="arrow right" id="arrowRight">→</button>
 	</div>
   </section>
 
@@ -243,6 +243,25 @@
       const scrollAmount = card.offsetWidth + 24;
       track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
+  </script>
+  <!-- ✅ Paste the arrow button code here -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById('testimonialTrack');
+      const leftBtn = document.getElementById('arrowLeft');
+      const rightBtn = document.getElementById('arrowRight');
+
+      function scrollTestimonials(direction) {
+        if (!track) return;
+        const card = track.querySelector('.testimonial-card');
+        if (!card) return;
+        const scrollAmount = card.offsetWidth + 24; // Adjust spacing if needed
+        track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
+
+      leftBtn.addEventListener('click', () => scrollTestimonials(-1));
+      rightBtn.addEventListener('click', () => scrollTestimonials(1));
+    });
   </script>
 
 </body>
