@@ -233,16 +233,6 @@
         track.scrollLeft = scrollX;
       }
     }, 30);
-	
-	// ✅ Manual arrow scroll
-    function scrollTestimonials(direction) {
-      const track = document.getElementById('testimonialTrack');
-      if (!track) return;
-      const card = track.querySelector('.testimonial-card');
-      if (!card) return;
-      const scrollAmount = card.offsetWidth + 24;
-      track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-    }
   </script>
   <!-- ✅ Paste the arrow button code here -->
   <script>
