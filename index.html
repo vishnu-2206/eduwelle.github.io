@@ -119,30 +119,37 @@
 
   <section class="section" id="testimonials" data-aos="fade-up">
     <h2 data-aos="fade-right">What People Say</h2>
-    <div class="testimonial-carousel">
-      <div class="testimonial-track">
-        <div class="testimonial-card">
-          <p>"It was a great opportunity to extend my knowledge of ML and its concepts with well-experienced teacher."</p>
-          <h4>— Suchanya S, BSc Computer Science</h4>
-        </div>
-        <div class="testimonial-card">
-          <p>"Excellent tutors, helped us to understand the concepts at a deeper level."</p>
-          <h4>— Anagha Jayakumar, BSc Computer Science</h4>
-        </div>
-        <div class="testimonial-card">
-          <p>"Great learning opportunity for me."</p>
-          <h4>— Rithul Sreesan, BSc Computer Science</h4>
-        </div>
-        <div class="testimonial-card">
-          <p>"Excellent AI and Python training. Highly recommend!"</p>
-          <h4>— Ganesh M, BCA</h4>
-        </div>
-        <div class="testimonial-card">
-          <p>"Excellent."</p>
-          <h4>— Soorya S, BSc Computer Science</h4>
+	
+	<div class="testimonial-carousel-wrapper">
+      <button class="arrow left" onclick="scrollTestimonials(-1)">&#8592;</button>
+      
+	  <div class="testimonial-carousel">
+        <div class="testimonial-track">
+          <div class="testimonial-card">
+            <p>"It was a great opportunity to extend my knowledge of ML and its concepts with well-experienced teacher."</p>
+            <h4>— Suchanya S, BSc Computer Science</h4>
+          </div>
+          <div class="testimonial-card">
+            <p>"Excellent tutors, helped us to understand the concepts at a deeper level."</p>
+            <h4>— Anagha Jayakumar, BSc Computer Science</h4>
+          </div>
+          <div class="testimonial-card">
+            <p>"Great learning opportunity for me."</p>
+            <h4>— Rithul Sreesan, BSc Computer Science</h4>
+          </div>
+          <div class="testimonial-card">
+            <p>"Excellent AI and Python training. Highly recommend!"</p>
+            <h4>— Ganesh M, BCA</h4>
+          </div>
+          <div class="testimonial-card">
+            <p>"Excellent."</p>
+            <h4>— Soorya S, BSc Computer Science</h4>
+          </div>
         </div>
       </div>
-    </div>
+	  
+	  <button class="arrow right" onclick="scrollTestimonials(1)">&#8594;</button>
+	</div>
   </section>
 
   <section class="section" id="contact" data-aos="fade-up">
@@ -225,6 +232,16 @@
         track.scrollLeft = scrollX;
       }
     }, 30);
+	
+	// ✅ Manual arrow scroll
+    function scrollTestimonials(direction) {
+      const track = document.querySelector('.testimonial-track');
+	  if (!track) return;
+	  const card = track.querySelector('.testimonial-card');
+	  if (!card) return;
+	  const scrollAmount = card.offsetWidth + 24; // card width + typical gap
+	  track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+	}
   </script>
 
 </body>
