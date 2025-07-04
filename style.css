@@ -43,7 +43,18 @@ header {
   position: sticky;
   top: 0;
   z-index: 999;
-  animation: fadeInDown 0.8s ease forwards;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+header.scrolled {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 2rem;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+body.dark-mode header.scrolled {
+  background-color: rgba(20, 33, 61, 0.85);
 }
 
 nav a {
@@ -150,73 +161,35 @@ img.logo {
 /* Testimonials Section (Carousel Style) */
 .testimonial-carousel-wrapper {
   position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  overflow-x: visible;
-  overflow-y: hidden;
 }
-
-.testimonial-carousel-wrapper::before,
-.testimonial-carousel-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 60px;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.testimonial-carousel-wrapper::before {
-  left: 0;
-  background: linear-gradient(to right, var(--primary-bg), transparent);
-}
-
-.testimonial-carousel-wrapper::after {
-  right: 0;
-  background: linear-gradient(to left, var(--primary-bg), transparent);
-}
-
 
 .testimonial-carousel {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-stop: always;
-  padding: 1rem 0;
+  overflow: hidden;
   width: 100%;
   max-width: 1100px;
-  -ms-overflow-style: none;
-  display: flex;
-  scrollbar-width: none;
-}
-.testimonial-carousel::-webkit-scrollbar {
-  display: none;
+  padding: 1rem 0;
 }
 
 .testimonial-track {
-  scroll-snap-type: x mandatory;
   display: flex;
   gap: 1.5rem;
-  width: fit-content;
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
 }
 
 .testimonial-card {
-  flex: 0 0 auto;
+  flex: 0 0 calc((100% - 3rem) / 3); /* 3 cards, 1.5rem gap between */
   background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  min-width: 280px;
-  max-width: 350px;
-  flex-shrink: 0;
   transition: transform 0.3s ease;
-  scroll-snap-align: start;
 }
 
 .testimonial-card:hover {
@@ -232,6 +205,34 @@ img.logo {
   font-size: 0.9rem;
   color: var(--accent);
 }
+
+.arrow {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+.arrow:hover {
+  background-color: #0097a7;
+}
+
+@media (max-width: 900px) {
+  .testimonial-card {
+    flex: 0 0 calc((100% - 1.5rem) / 2); /* 2 cards */
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonial-card {
+    flex: 0 0 100%; /* 1 card */
+  }
+}
+
 
 /* Arrows */
 .arrow {
@@ -463,4 +464,15 @@ img.logo {
   .arrow {
     align-self: center;
   }
-}
+
+
+  #scrollProgress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.25s ease;
+  }
+  

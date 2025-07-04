@@ -42,12 +42,14 @@
 </head>
 <body>
 
+  <div id="scrollProgress"></div>
+
   <!-- Preloader -->
   <div id="preloader"><div class="loader"></div></div>
 
   <!-- Logo Modal -->
   <div id="logoModal">
-    <video id="logoVideo" muted autoplay playsinline>
+    <video id="logoVideo" muted autoplay playsinline preload="none">
       <source src="logo-reveal.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -55,7 +57,7 @@
 
   <!-- Header -->
   <header>
-    <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger">
+    <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger" loading="lazy">
     <nav>
 	  <a href="#about">About</a>
 	  <a href="#services">Services</a>
@@ -234,30 +236,39 @@
     // ✅ Testimonials: Auto-scroll with arrows only
     document.addEventListener("DOMContentLoaded", () => {
       const track = document.getElementById("testimonialTrack");
-      const testimonialCards = track.querySelectorAll(".testimonial-card");
-      const leftBtn = document.getElementById("arrowLeft");
-      const rightBtn = document.getElementById("arrowRight");
+	  const card = track.querySelector(".testimonial-card");
+	  const leftBtn = document.getElementById("arrowLeft");
+	  const rightBtn = document.getElementById("arrowRight");
 
-      let currentIndex = 0;
-      let autoScrollTimer = null;
-      let resumeTimer = null;
+	  let currentIndex = 0;
+	  let autoScrollTimer = null;
+	  let resumeTimer = null;
 
-      function scrollToIndex(index) {
-        testimonialCards[index].scrollIntoView({
-          behavior: "smooth",
-          inline: "center",
-          block: "nearest"
-        });
+	  function scrollToIndex(index) {
+        const cardWidth = card.offsetWidth + 24; // 1.5rem gap
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
         currentIndex = index;
       }
 
       function scrollNext() {
-        currentIndex = (currentIndex + 1) % testimonialCards.length;
+        const totalCards = track.querySelectorAll(".testimonial-card").length;
+        const visibleCards = Math.floor(track.parentElement.offsetWidth / (card.offsetWidth + 24));
+        if (currentIndex + visibleCards < totalCards) {
+          currentIndex++;
+        } else {
+      currentIndex = 0; // loop
+        }
         scrollToIndex(currentIndex);
       }
 
       function scrollPrev() {
-        currentIndex = (currentIndex - 1 + testimonialCards.length) % testimonialCards.length;
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          const totalCards = track.querySelectorAll(".testimonial-card").length;
+          const visibleCards = Math.floor(track.parentElement.offsetWidth / (card.offsetWidth + 24));
+          currentIndex = totalCards - visibleCards;
+        }
         scrollToIndex(currentIndex);
       }
 
@@ -281,8 +292,25 @@
         pauseAutoScroll();
       });
 
-      // Initial auto-scroll
       startAutoScroll();
+    });
+	
+    // Scroll Progress Bar Logic
+	window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById("scrollProgress").style.width = `${scrollPercent}%`;
+    });
+	
+	// Sticky header appearance on scroll
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
     });
   </script>
 
