@@ -121,10 +121,11 @@
     <h2 data-aos="fade-right">What People Say</h2>
 	
 	<div class="testimonial-carousel-wrapper">
-      <button class="arrow left" onclick="scrollTestimonials(-1)">&#8592;</button>
+      <button class="arrow left" onclick="scrollTestimonials(-1)">←</button>
       
 	  <div class="testimonial-carousel">
-        <div class="testimonial-track">
+        <div class="testimonial-track" id="testimonialTrack">
+		  <!-- testimonial cards here -->
           <div class="testimonial-card">
             <p>"It was a great opportunity to extend my knowledge of ML and its concepts with well-experienced teacher."</p>
             <h4>— Suchanya S, BSc Computer Science</h4>
@@ -148,7 +149,7 @@
         </div>
       </div>
 	  
-	  <button class="arrow right" onclick="scrollTestimonials(1)">&#8594;</button>
+	  <button class="arrow right" onclick="scrollTestimonials(1)">→</button>
 	</div>
   </section>
 
@@ -235,13 +236,13 @@
 	
 	// ✅ Manual arrow scroll
     function scrollTestimonials(direction) {
-      const track = document.querySelector('.testimonial-track');
-	  if (!track) return;
-	  const card = track.querySelector('.testimonial-card');
-	  if (!card) return;
-	  const scrollAmount = card.offsetWidth + 24; // card width + typical gap
-	  track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-	}
+      const track = document.getElementById('testimonialTrack');
+      if (!track) return;
+      const card = track.querySelector('.testimonial-card');
+      if (!card) return;
+      const scrollAmount = card.offsetWidth + 24;
+      track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
   </script>
 
 </body>
