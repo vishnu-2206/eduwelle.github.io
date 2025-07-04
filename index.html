@@ -223,19 +223,30 @@
       video.src = ""; // Unload to prevent flicker
     });
 	
-	// ✅ Auto-scroll testimonials
-    const track = document.querySelector('.testimonial-track');
-    let scrollX = 0;
-    setInterval(() => {
-      if (track) {
-        scrollX += 1;
-        if (scrollX >= track.scrollWidth - track.clientWidth) scrollX = 0;
-        track.scrollLeft = scrollX;
+
+	// ✅ Manual Scroll for Testimonials (ONLY keep this version)
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById("testimonialTrack");
+      const leftBtn = document.getElementById("arrowLeft");
+      const rightBtn = document.getElementById("arrowRight");
+
+      if (leftBtn && rightBtn && track) {
+        leftBtn.addEventListener("click", () => {
+          const card = track.querySelector(".testimonial-card");
+          if (!card) return;
+          const scrollAmount = card.offsetWidth + 24;
+          track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+        });
+
+        rightBtn.addEventListener("click", () => {
+          const card = track.querySelector(".testimonial-card");
+          if (!card) return;
+          const scrollAmount = card.offsetWidth + 24;
+          track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        });
       }
-    }, 30);
-  </script>
-  <!-- ✅ Paste the arrow button code here -->
-  <script>
+    });
+	
     document.addEventListener("DOMContentLoaded", () => {
       const track = document.getElementById('testimonialTrack');
       const leftBtn = document.getElementById('arrowLeft');
