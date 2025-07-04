@@ -119,26 +119,28 @@
 
   <section class="section" id="testimonials" data-aos="fade-up">
     <h2 data-aos="fade-right">What People Say</h2>
-    <div class="testimonials">
-      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100"> 
-		<p>"It was a great opportunity to extend my knowledge of ML and it's concepts with well experienced teacher."</p>
-        <h4>— Suchanya S, BSc Computer Science</h4>
-      </div>
-	  <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-        <p>"Excellent tutors, helped us to understand the concepts at a deeper level. </p>
-        <h4>— Anagha Jayakumar, BSc Computer Science</h4>
-      </div>
-	  <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-        <p>"Great learning opportunity for me."</p>
-        <h4>— Rithul Sreesan, BSc Computer Science</h4>
-      </div>
-      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-        <p>"Excellent AI and Python training. Highly recommend!"</p>
-        <h4>— Ganesh M , BCA</h4>
-      </div>
-	  <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-        <p>"Excellent"</p>
-        <h4>— Soorya S, BSc Computer Science</h4>
+    <div class="testimonial-carousel">
+      <div class="testimonial-track">
+        <div class="testimonial-card">
+          <p>"It was a great opportunity to extend my knowledge of ML and its concepts with well-experienced teacher."</p>
+          <h4>— Suchanya S, BSc Computer Science</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>"Excellent tutors, helped us to understand the concepts at a deeper level."</p>
+          <h4>— Anagha Jayakumar, BSc Computer Science</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>"Great learning opportunity for me."</p>
+          <h4>— Rithul Sreesan, BSc Computer Science</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>"Excellent AI and Python training. Highly recommend!"</p>
+          <h4>— Ganesh M, BCA</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>"Excellent."</p>
+          <h4>— Soorya S, BSc Computer Science</h4>
+        </div>
       </div>
     </div>
   </section>
@@ -212,6 +214,17 @@
       video.currentTime = 0;
       video.src = ""; // Unload to prevent flicker
     });
+	
+	// ✅ Auto-scroll testimonials
+  const track = document.querySelector('.testimonial-track');
+  let scrollX = 0;
+  setInterval(() => {
+    if (track) {
+      scrollX += 1;
+      if (scrollX >= track.scrollWidth - track.clientWidth) scrollX = 0;
+      track.scrollLeft = scrollX;
+    }
+  }, 30);
   </script>
 
 </body>
