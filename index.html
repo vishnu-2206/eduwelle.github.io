@@ -122,9 +122,9 @@
 	
 	<div class="testimonial-carousel-wrapper">
       <button class="arrow left" id="arrowLeft">←</button>
-      
-	  <div class="testimonial-carousel" id="testimonialCarousel">
-        <div class="testimonial-track">
+	  
+      <div class="testimonial-carousel" id="testimonialCarousel">
+        <div class="testimonial-track" id="testimonialTrack">
 		  <!-- testimonial cards here -->
           <div class="testimonial-card">
             <p>"It was a great opportunity to extend my knowledge of ML and its concepts with well-experienced teacher."</p>
@@ -146,8 +146,12 @@
             <p>"Excellent."</p>
             <h4>— Soorya S, BSc Computer Science</h4>
           </div>
+		  
         </div>
       </div>
+	  
+	  <!-- Optional: Active Indicator Dots -->
+      <div class="testimonial-indicators" id="testimonialIndicators"></div>
 	  
 	  <button class="arrow right" id="arrowRight">→</button>
 	</div>
@@ -172,7 +176,7 @@
   </footer>
 
   <!-- Back to Top -->
-  <button id="backToTop" title="Back to Top">↑</button>
+  <button id="backToTop" title="Back to Top" aria-label="Back to Top">↑</button>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -226,21 +230,46 @@
 
 	// ✅ Manual Scroll for Testimonials (ONLY keep this version)
 	document.addEventListener("DOMContentLoaded", () => {
-      const track = document.getElementById("testimonialCarousel");
-      const leftBtn = document.getElementById("arrowLeft");
-      const rightBtn = document.getElementById("arrowRight");
+	  const track = document.getElementById("testimonialTrack");
+      const indicatorContainer = document.getElementById("testimonialIndicators");
+	  const testimonialCards = track.querySelectorAll(".testimonial-card");
 
-      if (leftBtn && rightBtn && track) {
-        const scrollTestimonials = (direction) => {
-          const card = track.querySelector(".testimonial-card");
-          if (!card) return;
-          const scrollAmount = card.offsetWidth + 24;
-          track.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
-        };
+      // ✅ Dynamically generate dots
+      testimonialCards.forEach((_, i) => {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        indicatorContainer.appendChild(dot);
+      });
 
-        leftBtn.addEventListener("click", () => scrollTestimonials(-1));
-        rightBtn.addEventListener("click", () => scrollTestimonials(1));
-      }
+      const dots = indicatorContainer.querySelectorAll(".dot");
+
+	  // Make dots clickable
+	  dots.forEach((dot, i) => {
+	    dot.addEventListener("click", () => {
+          testimonialCards[i].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+		});
+	  });
+	  
+      // ✅ Update active dot on scroll
+      track.addEventListener("scroll", () => {
+        const scrollLeft = track.scrollLeft;
+        let index = 0;
+
+        testimonialCards.forEach((card, i) => {
+          const cardLeft = card.offsetLeft;
+          const cardRight = cardLeft + card.offsetWidth;
+          const center = scrollLeft + track.offsetWidth / 2;
+
+          if (center >= cardLeft && center < cardRight) {
+            index = i;
+          }
+        });
+		
+		dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+      });
     });
   </script>
 
