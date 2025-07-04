@@ -229,10 +229,10 @@
 	
 
 	// ✅ Manual Scroll for Testimonials (ONLY keep this version)
-	document.addEventListener("DOMContentLoaded", () => {
-	  const track = document.getElementById("testimonialTrack");
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById("testimonialTrack");
       const indicatorContainer = document.getElementById("testimonialIndicators");
-	  const testimonialCards = track.querySelectorAll(".testimonial-card");
+      const testimonialCards = track.querySelectorAll(".testimonial-card");
 
       // ✅ Dynamically generate dots
       testimonialCards.forEach((_, i) => {
@@ -244,13 +244,31 @@
 
       const dots = indicatorContainer.querySelectorAll(".dot");
 
-	  // Make dots clickable
-	  dots.forEach((dot, i) => {
-	    dot.addEventListener("click", () => {
-          testimonialCards[i].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-		});
-	  });
-	  
+      // Make dots clickable
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          testimonialCards[i].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+          });
+        });
+      });
+
+      // ✅ Scroll using arrow buttons
+      const arrowLeft = document.getElementById("arrowLeft");
+      const arrowRight = document.getElementById("arrowRight");
+
+      const scrollAmount = 320; // Approximate card width + gap
+
+      arrowLeft.addEventListener("click", () => {
+        track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      });
+
+      arrowRight.addEventListener("click", () => {
+        track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+
       // ✅ Update active dot on scroll
       track.addEventListener("scroll", () => {
         const scrollLeft = track.scrollLeft;
@@ -265,8 +283,8 @@
             index = i;
           }
         });
-		
-		dots.forEach((dot, i) => {
+
+        dots.forEach((dot, i) => {
           dot.classList.toggle("active", i === index);
         });
       });
