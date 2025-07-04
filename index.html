@@ -72,10 +72,10 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero animate-in">
     <h1>EduWelle Labs</h1>
     <p>Empowering Innovation in Education through Research, Mentorship, and Technology Solutions.</p>
-    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in Touch</button>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Contact</button>
   </section>
 
   <!-- Sections -->
@@ -187,7 +187,22 @@
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 800, once: true, offset: 100 });
+    // ✅ Force scroll position to top on refresh (place this FIRST)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      window.scrollTo(0, 0);
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 150);
+    });
+
+    AOS.init({ duration: 800, once: true, offset: 100, mirror: false });
 
     // Dark Mode Toggle
     const toggle = document.getElementById('darkToggle');
@@ -204,6 +219,12 @@
     // Preloader
     window.addEventListener("load", () => {
       document.getElementById("preloader").classList.add("hidden");
+      document.querySelector(".hero").classList.add("animate-in");
+    
+	  // Ensure scroll to top
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 150);
     });
 
     // Back to Top
@@ -233,40 +254,39 @@
       video.src = ""; // Unload to prevent flicker
     });
 	
-    // ✅ Testimonials: Auto-scroll with arrows only
+    // Scroll to top only after full load
     document.addEventListener("DOMContentLoaded", () => {
       const track = document.getElementById("testimonialTrack");
-	  const card = track.querySelector(".testimonial-card");
-	  const leftBtn = document.getElementById("arrowLeft");
-	  const rightBtn = document.getElementById("arrowRight");
+      const card = track.querySelector(".testimonial-card");
+      const leftBtn = document.getElementById("arrowLeft");
+      const rightBtn = document.getElementById("arrowRight");
+      const totalCards = track.querySelectorAll(".testimonial-card").length;
 
-	  let currentIndex = 0;
-	  let autoScrollTimer = null;
-	  let resumeTimer = null;
+      let currentIndex = 0;
+      let autoScrollTimer = null;
+      let resumeTimer = null;
 
-	  function scrollToIndex(index) {
-        const cardWidth = card.offsetWidth + 24; // 1.5rem gap
+      function scrollToIndex(index) {
+        const cardWidth = card.offsetWidth + 24; // card width + gap
         track.style.transform = `translateX(-${index * cardWidth}px)`;
         currentIndex = index;
       }
 
       function scrollNext() {
-        const totalCards = track.querySelectorAll(".testimonial-card").length;
         const visibleCards = Math.floor(track.parentElement.offsetWidth / (card.offsetWidth + 24));
         if (currentIndex + visibleCards < totalCards) {
           currentIndex++;
         } else {
-      currentIndex = 0; // loop
+          currentIndex = 0; // loop to start
         }
         scrollToIndex(currentIndex);
       }
 
       function scrollPrev() {
+        const visibleCards = Math.floor(track.parentElement.offsetWidth / (card.offsetWidth + 24));
         if (currentIndex > 0) {
           currentIndex--;
         } else {
-          const totalCards = track.querySelectorAll(".testimonial-card").length;
-          const visibleCards = Math.floor(track.parentElement.offsetWidth / (card.offsetWidth + 24));
           currentIndex = totalCards - visibleCards;
         }
         scrollToIndex(currentIndex);
@@ -279,7 +299,7 @@
       function pauseAutoScroll() {
         clearInterval(autoScrollTimer);
         clearTimeout(resumeTimer);
-        resumeTimer = setTimeout(startAutoScroll, 10000); // Resume after 10s
+        resumeTimer = setTimeout(startAutoScroll, 10000); // resume after 10s
       }
 
       leftBtn.addEventListener("click", () => {
@@ -292,9 +312,13 @@
         pauseAutoScroll();
       });
 
-      startAutoScroll();
+      // Delay auto scroll to avoid layout clash
+      setTimeout(() => {
+        startAutoScroll();
+        scrollToIndex(0); // reset carousel to first
+      }, 400);
     });
-	
+
     // Scroll Progress Bar Logic
 	window.addEventListener("scroll", () => {
       const scrollTop = window.scrollY;
@@ -312,6 +336,7 @@
         header.classList.remove("scrolled");
       }
     });
+	
   </script>
 
 </body>
