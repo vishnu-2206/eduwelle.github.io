@@ -146,13 +146,17 @@
             <p>"Excellent."</p>
             <h4>— Soorya S, BSc Computer Science</h4>
           </div>
-		  
+		  <div class="testimonial-card">
+            <p>"Excellent experience."</p>
+            <h4>— Abin A, BSc Computer Science</h4>
+          </div>
+		  <div class="testimonial-card">
+            <p>"Great learning opportunity to extend my knowledge. Wonderful experience!."</p>
+            <h4>— Gopika P.S., BSc Computer Science</h4>
+          </div>
         </div>
       </div>
-	  
-	  <!-- Optional: Active Indicator Dots -->
-      <div class="testimonial-indicators" id="testimonialIndicators"></div>
-	  
+
 	  <button class="arrow right" id="arrowRight">→</button>
 	</div>
   </section>
@@ -227,67 +231,58 @@
       video.src = ""; // Unload to prevent flicker
     });
 	
-
-	// ✅ Manual Scroll for Testimonials (ONLY keep this version)
+    // ✅ Testimonials: Auto-scroll with arrows only
     document.addEventListener("DOMContentLoaded", () => {
       const track = document.getElementById("testimonialTrack");
-      const indicatorContainer = document.getElementById("testimonialIndicators");
       const testimonialCards = track.querySelectorAll(".testimonial-card");
+      const leftBtn = document.getElementById("arrowLeft");
+      const rightBtn = document.getElementById("arrowRight");
 
-      // ✅ Dynamically generate dots
-      testimonialCards.forEach((_, i) => {
-        const dot = document.createElement("span");
-        dot.classList.add("dot");
-        if (i === 0) dot.classList.add("active");
-        indicatorContainer.appendChild(dot);
-      });
+      let currentIndex = 0;
+      let autoScrollTimer = null;
+      let resumeTimer = null;
 
-      const dots = indicatorContainer.querySelectorAll(".dot");
-
-      // Make dots clickable
-      dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-          testimonialCards[i].scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "center"
-          });
+      function scrollToIndex(index) {
+        testimonialCards[index].scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest"
         });
+        currentIndex = index;
+      }
+
+      function scrollNext() {
+        currentIndex = (currentIndex + 1) % testimonialCards.length;
+        scrollToIndex(currentIndex);
+      }
+
+      function scrollPrev() {
+        currentIndex = (currentIndex - 1 + testimonialCards.length) % testimonialCards.length;
+        scrollToIndex(currentIndex);
+      }
+
+      function startAutoScroll() {
+        autoScrollTimer = setInterval(scrollNext, 6000);
+      }
+
+      function pauseAutoScroll() {
+        clearInterval(autoScrollTimer);
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(startAutoScroll, 10000); // Resume after 10s
+      }
+
+      leftBtn.addEventListener("click", () => {
+        scrollPrev();
+        pauseAutoScroll();
       });
 
-      // ✅ Scroll using arrow buttons
-      const arrowLeft = document.getElementById("arrowLeft");
-      const arrowRight = document.getElementById("arrowRight");
-
-      const scrollAmount = 320; // Approximate card width + gap
-
-      arrowLeft.addEventListener("click", () => {
-        track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      rightBtn.addEventListener("click", () => {
+        scrollNext();
+        pauseAutoScroll();
       });
 
-      arrowRight.addEventListener("click", () => {
-        track.scrollBy({ left: scrollAmount, behavior: "smooth" });
-      });
-
-      // ✅ Update active dot on scroll
-      track.addEventListener("scroll", () => {
-        const scrollLeft = track.scrollLeft;
-        let index = 0;
-
-        testimonialCards.forEach((card, i) => {
-          const cardLeft = card.offsetLeft;
-          const cardRight = cardLeft + card.offsetWidth;
-          const center = scrollLeft + track.offsetWidth / 2;
-
-          if (center >= cardLeft && center < cardRight) {
-            index = i;
-          }
-        });
-
-        dots.forEach((dot, i) => {
-          dot.classList.toggle("active", i === index);
-        });
-      });
+      // Initial auto-scroll
+      startAutoScroll();
     });
   </script>
 
