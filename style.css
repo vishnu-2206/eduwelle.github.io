@@ -155,7 +155,8 @@ img.logo {
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
-  overflow: hidden;
+  overflow-x: visible;
+  overflow-y: hidden;
 }
 
 .testimonial-carousel-wrapper::before,
@@ -222,7 +223,7 @@ img.logo {
   scroll-snap-type: x mandatory;
   display: flex;
   gap: 1.5rem;
-  min-width: 100%;
+  width: fit-content;
 }
 
 .testimonial-card {
