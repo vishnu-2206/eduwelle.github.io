@@ -246,23 +246,6 @@
         });
       }
     });
-	
-    document.addEventListener("DOMContentLoaded", () => {
-      const track = document.getElementById('testimonialTrack');
-      const leftBtn = document.getElementById('arrowLeft');
-      const rightBtn = document.getElementById('arrowRight');
-
-      function scrollTestimonials(direction) {
-        if (!track) return;
-        const card = track.querySelector('.testimonial-card');
-        if (!card) return;
-        const scrollAmount = card.offsetWidth + 24; // Adjust spacing if needed
-        track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-      }
-
-      leftBtn.addEventListener('click', () => scrollTestimonials(-1));
-      rightBtn.addEventListener('click', () => scrollTestimonials(1));
-    });
   </script>
 
 </body>

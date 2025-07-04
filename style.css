@@ -160,6 +160,7 @@ img.logo {
 
 .testimonial-carousel {
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   padding: 1rem 0;
   width: 100%;
@@ -185,6 +186,7 @@ img.logo {
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   min-width: 280px;
   max-width: 350px;
+  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
@@ -212,6 +214,7 @@ img.logo {
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s ease;
+  z-index: 10;
 }
 .arrow:hover {
   background-color: #0097a7;
