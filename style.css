@@ -639,12 +639,15 @@ img.logo {
 
 @media (min-width: 768px) {
   .header-container {
+	display: flex;
     justify-content: space-between;
     align-items: center;
+	gap: 1rem;
   }
 
   .logo {
     order: 1;
+	margin-left: 0;
   }
 
   .nav-links {
@@ -657,7 +660,8 @@ img.logo {
   }
 
   .hamburger {
-    display: none;
+    order: 2;
+	margin-left: auto;
   }
 
   .switch {
