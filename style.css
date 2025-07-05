@@ -671,7 +671,7 @@ img.logo {
     display: flex !important;
 	gap: 1.5rem;
 	align-items: center;
-    margin-right: 1.5rem; /* space between nav links and dark mode toggle */ 
+    margin-right: 2rem; /* space between nav links and dark mode toggle */ 
   }
   
   .right-controls {
