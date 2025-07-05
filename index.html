@@ -57,27 +57,36 @@
 
   <!-- Header -->
   <header>
-    <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger" loading="lazy">
     
-	<!-- Hamburger icon -->
+	<!-- Left: Hamburger -->
 	<div class="hamburger" id="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </div>   
-
-   <nav class="nav-links" id="navLinks">
-	  <a href="#about">About</a>
-	  <a href="#services">Services</a>
-	  <a href="#projects">Projects</a>
-	  <a href="#contact">Contact</a>
-	  <a href="/blog/">Blog</a>
+    
+	<!-- Center: Logo -->
+	<img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger" loading="lazy">
+	
+	<!-- Right: Dark Toggle -->
+	
+	
+	<!-- Navigation Links -->
+    <nav class="nav-container">
+      <div class="nav-links">
+	    <a href="#about">About</a>
+	    <a href="#services">Services</a>
+	    <a href="#projects">Projects</a>
+	    <a href="#contact">Contact</a>
+	    <a href="/blog/">Blog</a>
+	  </div>
+	  <label class="switch" title="Toggle Dark Mode">
+        <input type="checkbox" id="darkToggle">
+        <span class="slider"></span>
+      </label>
 	</nav>
 	
-    <label class="switch" title="Toggle Dark Mode">
-      <input type="checkbox" id="darkToggle">
-      <span class="slider"></span>
-    </label>
+	
   </header>
 
   <!-- Hero Section -->
