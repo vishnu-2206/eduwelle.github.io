@@ -58,13 +58,22 @@
   <!-- Header -->
   <header>
     <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger" loading="lazy">
-    <nav>
+    
+	<!-- Hamburger icon -->
+	<div class="hamburger" id="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>   
+
+   <nav class="nav-links" id="navLinks">
 	  <a href="#about">About</a>
 	  <a href="#services">Services</a>
 	  <a href="#projects">Projects</a>
 	  <a href="#contact">Contact</a>
 	  <a href="/blog/">Blog</a>
 	</nav>
+	
     <label class="switch" title="Toggle Dark Mode">
       <input type="checkbox" id="darkToggle">
       <span class="slider"></span>
@@ -335,6 +344,19 @@
       } else {
         header.classList.remove("scrolled");
       }
+    });
+	
+	//Hamburger Menu
+	const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      hamburger.classList.toggle('active');
+	  
+	   // Update aria-expanded for accessibility
+       const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+       hamburger.setAttribute('aria-expanded', !expanded);
     });
 	
   </script>
