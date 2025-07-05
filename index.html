@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  
   <style>
+
     /* Logo Video Modal Overlay */
     #logoModal {
       display: none;
@@ -37,9 +39,13 @@
 
     .logo {
       cursor: pointer;
+	  height: 40px;
     }
-  </style>
+	
+  </style> 
+  
 </head>
+
 <body>
 
   <div id="scrollProgress"></div>
@@ -58,34 +64,32 @@
   <!-- Header -->
   <header>
     
-	<!-- Left: Hamburger -->
-	<div class="hamburger" id="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>   
-    
-	<!-- Center: Logo -->
-	<img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger" loading="lazy">
+	<div class="header-container">
+      <!-- Left: Logo -->
+	  <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger" loading="lazy">
 	
-	<!-- Right: Dark Toggle -->
+	  <!-- Middle: Hamburger -->
+	  <div class="hamburger" id="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>   
 	
-	
-	<!-- Navigation Links -->
-    <nav class="nav-container">
-      <div class="nav-links">
+	  <!-- Desktop & Mobile: Navigation -->
+      <nav class="nav-links">
 	    <a href="#about">About</a>
 	    <a href="#services">Services</a>
 	    <a href="#projects">Projects</a>
 	    <a href="#contact">Contact</a>
 	    <a href="/blog/">Blog</a>
-	  </div>
-	  <label class="switch" title="Toggle Dark Mode">
+	  </nav>
+	  
+	  <!-- Always on Right: Dark Mode Toggle -->
+      <label class="switch" title="Toggle Dark Mode">
         <input type="checkbox" id="darkToggle">
         <span class="slider"></span>
       </label>
-	</nav>
-	
+    </div>
 	
   </header>
 
