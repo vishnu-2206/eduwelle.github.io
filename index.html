@@ -67,30 +67,33 @@
 	<div class="header-container">
       <!-- Left: Logo -->
 	  <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger" loading="lazy">
-	
-	  <!-- Middle: Hamburger -->
-	  <div class="hamburger" id="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>   
-	
-	  <!-- Desktop & Mobile: Navigation -->
-      <nav class="nav-links">
-	    <a href="#about">About</a>
-	    <a href="#services">Services</a>
-	    <a href="#projects">Projects</a>
-	    <a href="#contact">Contact</a>
-	    <a href="/blog/">Blog</a>
-	  </nav>
 	  
-	  <!-- Always on Right: Dark Mode Toggle -->
-      <label class="switch" title="Toggle Dark Mode">
-        <input type="checkbox" id="darkToggle">
-        <span class="slider"></span>
-      </label>
-    </div>
-	
+	  <!-- Desktop & Mobile: Navigation -->
+        <nav class="nav-links">
+	      <a href="#about">About</a>
+	      <a href="#services">Services</a>
+	      <a href="#projects">Projects</a>
+	      <a href="#contact">Contact</a>
+	      <a href="/blog/">Blog</a>
+	    </nav>
+	  
+	  <!-- Right: Hamburger + Toggle -->
+	  <div class="right-controls">
+	    <!-- Hamburger -->
+	    <div class="hamburger" id="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div> 
+
+	    <!-- Dark Mode Toggle -->
+        <label class="switch" title="Toggle Dark Mode">
+          <input type="checkbox" id="darkToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+	</div>
+		
   </header>
 
   <!-- Hero Section -->
@@ -370,6 +373,15 @@
 	   // Update aria-expanded for accessibility
        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
        hamburger.setAttribute('aria-expanded', !expanded);
+    });
+	
+	// Close nav when a nav link is clicked (mobile UX fix)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
     });
 	
   </script>

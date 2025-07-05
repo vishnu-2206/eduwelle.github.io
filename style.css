@@ -570,24 +570,35 @@ img.logo {
     display: flex;
     align-items: center;
     justify-content: space-between;
+	padding: 0 1rem;
     width: 100%;
   }
   
-  .hamburger {
+  .logo {
+	height: 40px;
+    margin-left: 0; /* Pushes others to the right */
+  }
+  
+  .right-controls {
     display: flex;
-    order: 2;
-	margin-left: auto;
-	margin-right: 1rem;
+    align-items: center;
+    gap: 0.25rem; /* tighter spacing between hamburger and toggle */
+    margin-left: auto;
   }
 
-  .logo {
-    order: 1;
-    margin-left: 0;
+  .hamburger {
+    display: flex;
+    margin: 0; /* Remove default margin */
+	padding-right: 0; /* Ensure no gap */
   }
 
   .switch {
-    order: 3;
-	margin-right: 0.5rem;
+	display: inline-block; /* ensure toggle is visible */
+	margin: 0; /* Remove extra spacing */
+  }
+  
+  .mobile-toggle {
+    display: none; /* not used now */
   }
 
   .nav-links {
@@ -609,7 +620,6 @@ img.logo {
   }
 
   .nav-links.show {
-	display: flex;
 	opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
@@ -647,32 +657,30 @@ img.logo {
 @media (min-width: 768px) {
   .header-container {
 	display: flex;
+	align-items: center;
     justify-content: space-between;
-    align-items: center;
-	gap: 1rem;
+	width: 100%;
   }
 
   .logo {
-    order: 1;
-	margin-left: 0;
+	height: 40px; 
+	margin-right: auto; /* push everything else to the right */
   }
 
   .nav-links {
     display: flex !important;
-    flex-direction: row;
-    gap: 1.5rem;
-    order: 2;
-    margin-left: auto;
-    margin-right: 1rem;
+	gap: 1.5rem;
+	align-items: center;
+    margin-right: 1.5rem; /* space between nav links and dark mode toggle */ 
+  }
+  
+  .right-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
   .hamburger {
-    order: 2;
-	margin-left: auto;
-  }
-
-  .switch {
-    order: 3;
-    margin-left: 0;
+    display: none; /* hide hamburger on desktop */
   }
 }
