@@ -4,44 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Build Your First AI Project in 5 Steps</title>
-  <meta name="description" content="EduWelle Blog - Insights, Ideas, and Innovations" />
-  <link rel="icon" type="image/x-icon" href="/blog/favicon.ico" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-  <link rel="stylesheet" href="/blog/style.css">
+  <meta name="description" content="A simple 5-step guide to start building your first AI project using Python and real-world data — perfect for students and early researchers." />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <style>
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <img src="/blog/logo.png" alt="EduWelle Labs Logo" class="logo">
-    <nav>
-      <a href="https://www.eduwelle.com/">Home</a>
-      <a href="https://www.eduwelle.com/blog/">Blog</a>
-    </nav>
-    <label class="switch" title="Toggle Dark Mode">
-      <input type="checkbox" id="darkToggle">
-      <span class="slider"></span>
-    </label>
-  </header>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress"></div>
 
   <!-- Preloader -->
   <div id="preloader"><div class="loader"></div></div>
 
-  <!-- Main Content -->
-  <main class="section" data-aos="fade-up">
-    <p>Starting an AI project doesn’t need to be intimidating. Here's a simple roadmap:</p>
-<ol>
-<li><strong>Define the Problem</strong> – e.g., classification, prediction, clustering</li>
-<li><strong>Collect &amp; Clean Data</strong> – Use public datasets or EduWelle-curated sources</li>
-<li><strong>Choose a Model</strong> – Start with <code>scikit-learn</code>, then explore <code>TensorFlow</code></li>
-<li><strong>Train and Evaluate</strong> – Split your data, test accuracy</li>
-<li><strong>Visualize and Deploy</strong> – Create plots, and optionally deploy with Streamlit</li>
-</ol>
-<p>Join our next bootcamp to get a hands-on walkthrough!</p>
-<hr>
-<p>Would you like a free template? Email us at <a href="mailto:info@eduwelle.com">info@eduwelle.com</a></p>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <img src="/logo-light.png" alt="EduWelle Logo" class="logo logo-light">
+      <img src="/logo-dark.png" alt="EduWelle Logo Dark" class="logo logo-dark">
 
-  </main>
+      <nav class="nav-links">
+        <a href="https://www.eduwelle.com/">Home</a>
+        <a href="https://www.eduwelle.com/blog/">Blog</a>
+      </nav>
+
+      <div class="right-controls">
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        <div id="lottieToggle" title="Toggle Dark Mode">
+          <lottie-player
+            id="darkToggleAnim"
+            src="/dark-toggle.json"
+            background="transparent"
+            speed="2.5"
+            style="width: 50px; height: 50px;"
+            loop="false">
+          </lottie-player>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container">
+      <p>Embarking on your first AI project doesn’t need to be intimidating. At EduWelle, we break it down into 5 clear and actionable steps.</p>
+<h2>🚀 5 Steps to Start Your AI Journey</h2>
+<p>1. <strong>Define the Problem</strong><br>
+    What are you solving? Is it classification (e.g., spam detection), regression (e.g., house price prediction), or clustering (e.g., customer segments)?</p>
+<p>2. <strong>Collect &amp; Clean Data</strong><br>
+    Start with public datasets like Kaggle or UCI ML Repository. Clean and preprocess for missing values, noise, or outliers.</p>
+<p>3. <strong>Choose a Model</strong><br>
+    Begin with simple models using <code>scikit-learn</code>. As you gain confidence, explore deep learning frameworks like <code>TensorFlow</code> or <code>PyTorch</code>.</p>
+<p>4. <strong>Train and Evaluate</strong><br>
+    Split your data into training and test sets. Evaluate performance using metrics like accuracy, F1-score, or RMSE depending on your problem.</p>
+<p>5. <strong>Visualize and Deploy</strong><br>
+    Use <code>matplotlib</code> or <code>seaborn</code> to generate insights from your model. Try deploying a simple web app using <strong>Streamlit</strong> or <strong>Gradio</strong>.</p>
+<h2>🧑‍🏫 Learn with EduWelle</h2>
+<p>Join our upcoming <strong>AI Bootcamp</strong> for a hands-on walkthrough with live mentoring and real-world datasets.</p>
+<hr>
+<p>📩 <strong>Want a free project template?</strong> Email us at <a href="mailto:info@eduwelle.com">info@eduwelle.com</a></p>
+
+    </div>
+  </section>
+
 
   <!-- Footer -->
   <footer class="footer">
@@ -50,28 +87,66 @@
   </footer>
 
   <!-- Back to Top -->
-  <button id="backToTop" title="Back to Top">↑</button>
+  <button id="backToTop" title="Back to Top" aria-label="Back to Top">↑</button>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 800, once: true, offset: 100 });
-
-    const toggle = document.getElementById('darkToggle');
-    const prefersDark = localStorage.getItem('dark-mode') === 'true';
-    if (prefersDark) {
-      document.body.classList.add('dark-mode');
-      toggle.checked = true;
+    // ✅ Scroll Restoration Fix (top priority)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
     }
-    toggle.addEventListener('change', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('dark-mode', toggle.checked);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      window.scrollTo(0, 0); // force scroll to top immediately
     });
 
     window.addEventListener("load", () => {
-      document.getElementById("preloader").classList.add("hidden");
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.getElementById("preloader").classList.add("hidden");
+        const hero = document.querySelector(".hero");
+        if (hero) hero.classList.add("animate-in");
+      }, 150);
     });
 
+    // Dark Mode Toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("lottieToggle");
+      const anim = document.getElementById("darkToggleAnim");
+      const SUN_FRAME = 0, MOON_FRAME = 160;
+      let isDark = localStorage.getItem('dark-mode') === 'true';
+
+      const wait = setInterval(() => {
+        if (anim && anim.getLottie) {
+          clearInterval(wait);
+          const lottie = anim.getLottie();
+          if (isDark) {
+            document.body.classList.add('dark-mode');
+            lottie.goToAndStop(MOON_FRAME, true);
+          } else {
+            lottie.goToAndStop(SUN_FRAME, true);
+          }
+
+          toggle.addEventListener("click", () => {
+            isDark = !isDark;
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("dark-mode", isDark);
+            lottie.playSegments(isDark ? [SUN_FRAME, MOON_FRAME] : [MOON_FRAME, SUN_FRAME], true);
+          });
+        }
+      }, 100);
+    });
+
+    // Scroll Progress
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById("scrollProgress").style.width = `${scrollPercent}%`;
+    });
+
+    // Back to Top
     const backToTopBtn = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
       backToTopBtn.classList.toggle("show", window.scrollY > 300);
@@ -79,6 +154,25 @@
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    // Sticky header
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      header.classList.toggle("scrolled", window.scrollY > 10);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+      hamburger.classList.toggle("active");
+      const expanded = hamburger.getAttribute("aria-expanded") === "true";
+      hamburger.setAttribute("aria-expanded", !expanded);
+    });
+
+    // AOS Animation
+    AOS.init({ duration: 800, once: true, offset: 100 });
   </script>
 </body>
 </html>

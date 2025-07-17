@@ -44,6 +44,7 @@
 	
   </style> 
   
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>  
 </head>
 
 <body>
@@ -54,11 +55,8 @@
   <div id="preloader"><div class="loader"></div></div>
 
   <!-- Logo Modal -->
-  <div id="logoModal">
-    <video id="logoVideo" muted autoplay playsinline preload="none">
-      <source src="logo-reveal.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <div id="logoModal" class="logo-modal">
+    <video id="logoVideo" muted playsinline preload="auto"></video>
   </div>
 
   <!-- Header -->
@@ -66,31 +64,40 @@
     
 	<div class="header-container">
       <!-- Left: Logo -->
-	  <img src="logo.png" alt="EduWelle Labs Logo" class="logo" id="logoTrigger" loading="lazy">
-	  
-	  <!-- Desktop & Mobile: Navigation -->
-        <nav class="nav-links">
-	      <a href="#about">About</a>
-	      <a href="#services">Services</a>
-	      <a href="#projects">Projects</a>
-	      <a href="#contact">Contact</a>
-	      <a href="/blog/">Blog</a>
-	    </nav>
+      <img src="logo-light.png" alt="EduWelle Labs Logo" class="logo logo-light logoTrigger" loading="lazy">
+      <img src="logo-dark.png" alt="EduWelle Labs Logo Dark" class="logo logo-dark logoTrigger" loading="lazy">
+	 
+	 <!-- Desktop & Mobile: Navigation -->
+      <nav class="nav-links">
+	    <a href="#about">About</a>
+	    <a href="#services">Services</a>
+	    <a href="#projects">Projects</a>
+	    <a href="#contact">Contact</a>
+	    <a href="/blog/">Blog</a>
+	  </nav>
 	  
 	  <!-- Right: Hamburger + Toggle -->
 	  <div class="right-controls">
-	    <!-- Hamburger -->
+	    
+		<!-- Hamburger -->
 	    <div class="hamburger" id="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
         </div> 
 
-	    <!-- Dark Mode Toggle -->
-        <label class="switch" title="Toggle Dark Mode">
-          <input type="checkbox" id="darkToggle">
-          <span class="slider"></span>
-        </label>
+	    <!-- Animated Dark Mode Toggle -->
+        <div id="lottieToggle" title="Toggle Dark Mode" style="cursor:pointer;">
+          <lottie-player
+			id="darkToggleAnim"
+			src="dark-toggle.json"
+			background="transparent"
+			speed="2.5"
+			style="width: 50px; height: 50px;"
+			loop="false"
+		  ></lottie-player>
+        </div>
+		
       </div>
 	</div>
 		
@@ -100,105 +107,311 @@
   <section class="hero animate-in">
     <h1>EduWelle Labs</h1>
     <p>Empowering Innovation in Education through Research, Mentorship, and Technology Solutions.</p>
-    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Contact</button>
+	<lottie-player src="hero_ai.json" background="transparent" speed="1" style="width: 280px; height: 280px;" loop autoplay></lottie-player>
   </section>
 
   <!-- Sections -->
   <section class="section" id="about" data-aos="fade-up">
-    <h2 data-aos="fade-right">About Us</h2>
-    <p data-aos="fade-up">EduWelle Labs is a next-gen academic and R&D project center focused on transforming educational innovation through hands-on projects, technical mentorship, and computational research.</p>
+    <div class="container about-flex">
+    
+      <!-- Left: Title and Text -->
+      <div class="about-left" data-aos="fade-right">
+        <h2 class="section-title">🔬 About Us</h2>
+        <p>
+          EduWelle Labs is a dynamic academic and R&D innovation hub committed to bridging the gap between theoretical learning and real-world application. We specialize in hands-on project mentorship, advanced computational research, and end-to-end support for academic and industrial solutions. By nurturing creativity and technical excellence, we empower students, researchers, and professionals to build transformative technologies across AI, IoT, embedded systems, and digital education.
+        </p>
+      </div>
+
+      <!-- Right: Animation -->
+      <div class="about-right" id="aboutAnim" data-aos="fade-left">
+        <lottie-player 
+          src="ai_brain_animation.json" 
+          background="transparent"  
+          speed="1"  
+          loop  
+          autoplay  
+        ></lottie-player>
+      </div>
+
+    </div>
   </section>
 
+  
   <section class="section" id="services" data-aos="fade-up">
-    <h2 data-aos="fade-right">Our Services</h2>
-    <div class="services">
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
-        <h3>Academic Mentoring</h3>
-        <p>Expert guidance on academic projects, documentation, and thesis writing.</p>
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-right">💼 Our Services</h2>
+      <div class="services">
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+          <h3>Academic Mentoring</h3>
+          <p>Expert guidance on academic projects, documentation, and thesis writing.</p>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+          <h3>Research Consulting</h3>
+          <p>Support in design, simulation, coding, and paper publishing.</p>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+          <h3>Full-Stack Projects</h3>
+          <p>Projects in web, app, IoT, and embedded systems.</p>
+        </div>
+	    <div class="service-card" data-aos="zoom-in" data-aos-delay="500">
+		  <h3>Advanced Electronics</h3>
+		  <p>End-to-end support for VLSI design, PCB prototyping, signal processing, and embedded AI systems.</p>
+	    </div>
+	    <div class="service-card" data-aos="zoom-in" data-aos-delay="600">
+		  <h3>AI Innovation Labs</h3>
+		  <p>Accelerator-style mentoring to build intelligent systems using ML, NLP, computer vision, and data analytics.</p>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+          <h3>Bootcamps</h3>
+          <p>Hands-on training in emerging technologies.</p>
+        </div>
       </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
-        <h3>Research Consulting</h3>
-        <p>Support in design, simulation, coding, and paper publishing.</p>
+	</div>
+  </section>
+  
+  <section class="section" id="projects" data-aos="fade-up">
+    <div class="container container-wide">
+      <h2 class="section-title" data-aos="fade-right">🚀 Featured Projects</h2>
+      <p data-aos="fade-up">Explore some of our most impactful student and R&D projects since 2018.</p>
+
+      <!-- Full-Stack Projects -->
+      <div class="project-category" data-aos="fade-up">
+        <h3 class="project-header">🌐 Full-Stack Projects</h3>
+        <div class="project-grid">
+		
+		  <!-- Always-visible cards -->
+          <div class="project-card">
+            <h4>Student Portal System</h4>
+            <p class="project-year">2021 | Web App</p>
+            <p>Built using MERN stack for internal student and faculty management.</p>
+          </div>
+          <div class="project-card">
+            <h4>E-Commerce Store</h4>
+            <p class="project-year">2022 | Full Stack</p>
+            <p>Custom storefront with admin dashboard using React, Node.js, MongoDB.</p>
+          </div>
+          <div class="project-card">
+            <h4>IoT Dashboard</h4>
+            <p class="project-year">2023 | Embedded + Web</p>
+            <p>Live device data visualization dashboard using Firebase + ESP32.</p>
+          </div>
+		  
+		  <!-- Extra hidden cards -->
+          <div class="project-card extra">
+            <h4>Job Tracker Platform</h4>
+            <p class="project-year">2023 | MERN + Firebase</p>
+           <p>Helps users manage job applications with tracking and analytics features.</p>
+          </div>
+          <div class="project-card extra">
+            <h4>Online Exam System</h4>
+            <p class="project-year">2024 | Node.js + MongoDB</p>
+            <p>Secure exam portal with timer, live proctoring, and result analytics.</p>
+          </div>
+        </div>
+		
+		<!-- Show More Button -->
+        <button class="show-more-btn">Show More</button>
       </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
-        <h3>Full-Stack Projects</h3>
-        <p>Projects in web, app, IoT, and embedded systems.</p>
+
+      <!-- Advanced Electronics Projects -->
+      <div class="project-category" data-aos="fade-up">
+        <h3 class="project-header">⚙️ Advanced Electronics Projects</h3>
+        <div class="project-grid">
+		
+		  <!-- Always-visible cards -->
+          <div class="project-card">
+            <h4>Smart Irrigation System</h4>
+            <p class="project-year">2020 | Arduino + GSM</p>
+            <p>Soil moisture monitoring with automated watering via SMS alert.</p>
+          </div>
+          <div class="project-card">
+            <h4>Voice Controlled Home Automation</h4>
+            <p class="project-year">2021 | NodeMCU + Google Assistant</p>
+            <p>Smart home setup using voice commands and Blynk IoT platform.</p>
+          </div>
+          <div class="project-card">
+            <h4>Solar Power Monitoring</h4>
+            <p class="project-year">2022 | ESP32 + OLED</p>
+            <p>Live tracking of solar parameters on cloud dashboard + LCD.</p>
+          </div>
+		  
+		  <!-- Extra hidden cards -->
+          <div class="project-card extra">
+            <h4>Industrial Motor Monitor</h4>
+            <p class="project-year">2023 | ESP32 + Sensors</p>
+            <p>Monitors vibration, current, and temperature for predictive maintenance.</p>
+          </div>
+          <div class="project-card extra">
+            <h4>RFID-Based Locker System</h4>
+            <p class="project-year">2024 | Arduino + RFID</p>
+            <p>Access-controlled secure storage using RFID tags and relay locks.</p>
+          </div>
+        </div>
+		<!-- Show More Button -->
+        <button class="show-more-btn">Show More</button>
       </div>
-	  <div class="service-card" data-aos="zoom-in" data-aos-delay="500">
-		<h3>Advanced Electronics</h3>
-		<p>End-to-end support for VLSI design, PCB prototyping, signal processing, and embedded AI systems.</p>
-	  </div>
-	  <div class="service-card" data-aos="zoom-in" data-aos-delay="600">
-		<h3>AI Innovation Labs</h3>
-		<p>Accelerator-style mentoring to build intelligent systems using ML, NLP, computer vision, and data analytics.</p>
+
+      <!-- AI and Machine Learning Projects -->
+      <div class="project-category" data-aos="fade-up">
+        <h3 class="project-header">🧠 AI & ML Projects</h3>
+        <div class="project-grid">
+		  
+		  <!-- Always-visible cards -->
+          <div class="project-card">
+            <h4>Brain Tumor Classifier</h4>
+            <p class="project-year">2021 | Python + CNN</p>
+            <p>Image-based classification using Convolutional Neural Networks.</p>
+          </div>
+          <div class="project-card">
+            <h4>Fake News Detection</h4>
+            <p class="project-year">2022 | NLP + TF-IDF</p>
+            <p>Text classifier to distinguish fake vs real news articles using ML.</p>
+          </div>
+          <div class="project-card">
+            <h4>Student Performance Predictor</h4>
+            <p class="project-year">2023 | Scikit-learn + XGBoost</p>
+            <p>Predictive analytics for academic outcomes using past trends.</p>
+          </div>
+		 
+		 <!-- Extra hidden cards -->
+          <div class="project-card extra">
+            <h4>Smart Attendance System</h4>
+            <p class="project-year">2024 | ML + OpenCV</p>
+            <p>Face recognition system for automated classroom attendance.</p>
+          </div>
+          <div class="project-card extra">
+            <h4>AI Essay Grader</h4>
+            <p class="project-year">2024 | NLP + Transformers</p>
+            <p>Evaluates student essays using large language models.</p>
+          </div>
+		  
+        </div>
+		<!-- Show More Button (inside the same category) -->
+        <button class="show-more-btn" id="showMoreBtn">Show More</button>
       </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
-        <h3>Bootcamps</h3>
-        <p>Hands-on training in emerging technologies.</p>
+
+      <div class="coming-soon" data-aos="fade-up">
+        <!-- Group text content -->
+        <div class="coming-text">
+          <h3 class="project-header">🔮 Coming Soon</h3>
+          <ul>
+            <li>⚕️ AI-powered diagnostic tools for remote health monitoring</li>
+            <li>🌱 Environmental sensing systems for smart agriculture</li>
+            <li>📊 Energy-efficient AI models for edge computing</li>
+            <li>💡 Education tools using AR/VR and gamification</li>
+			<li>🧠 AI-driven mental health support system using sentiment and voice analysis</li>
+			<li>⚛️ Quantum-inspired algorithms for faster medical image analysis</li>
+          </ul>
+        </div>
+
+        <!-- Lottie animation block -->
+        <div class="coming-lottie">
+          <lottie-player
+            src="coming-soon.json"
+            background="transparent"
+            speed="1"
+            style="width: 300px; height: 300px;"
+            loop
+            autoplay>
+          </lottie-player>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="projects" data-aos="fade-up">
-    <h2 data-aos="fade-right">Featured Projects</h2>
-    <p data-aos="fade-up">Coming soon: AI models, environmental sensors, healthcare devices, and more.</p>
-  </section>
-
+  
   <section class="section" id="testimonials" data-aos="fade-up">
-    <h2 data-aos="fade-right">What People Say</h2>
-	
-	<div class="testimonial-carousel-wrapper">
-      <button class="arrow left" id="arrowLeft">←</button>
+    <div class="container">
+      <div class="testimonials-flex">
+  
+        <!-- Left: Heading and Carousel -->
+        <div class="testimonials-left" data-aos="fade-right">
+          <h2 class="section-title">💬 What People Say</h2>
+		
+          <div class="testimonial-carousel-wrapper">
+            <button class="arrow left" id="arrowLeft">←</button>
+		  
+            <div class="testimonial-carousel" id="testimonialCarousel">
+              <div class="testimonial-track" id="testimonialTrack">
+		  
+		        <!-- testimonial cards here -->
+                <div class="testimonial-card">
+                  <p>"It was a great opportunity to extend my knowledge of ML and its concepts with well-experienced teacher."</p>
+                  <h4>— Suchanya S, BSc Computer Science</h4>
+                </div>
+                <div class="testimonial-card">
+                  <p>"Excellent tutors, helped us to understand the concepts at a deeper level."</p>
+                  <h4>— Anagha Jayakumar, BSc Computer Science</h4>
+                </div>
+               <div class="testimonial-card">
+                  <p>"Great learning opportunity for me."</p>
+                  <h4>— Rithul Sreesan, BSc Computer Science</h4>
+                </div>
+                <div class="testimonial-card">
+                  <p>"Excellent AI and Python training. Highly recommend!"</p>
+                  <h4>— Ganesh M, BCA</h4>
+                </div>
+                <div class="testimonial-card">
+                  <p>"Excellent."</p>
+                  <h4>— Soorya S, BSc Computer Science</h4>
+                </div>
+		        <div class="testimonial-card">
+                  <p>"Excellent experience."</p>
+                  <h4>— Abin A, BSc Computer Science</h4>
+                </div>
+		        <div class="testimonial-card">
+                  <p>"Great learning opportunity to extend my knowledge. Wonderful experience!."</p>
+                  <h4>— Gopika P.S., BSc Computer Science</h4>
+                </div>
+              </div>
+            </div>
+		  
+	        <button class="arrow right" id="arrowRight">→</button>
+	      </div>
+	    </div>
 	  
-      <div class="testimonial-carousel" id="testimonialCarousel">
-        <div class="testimonial-track" id="testimonialTrack">
-		  <!-- testimonial cards here -->
-          <div class="testimonial-card">
-            <p>"It was a great opportunity to extend my knowledge of ML and its concepts with well-experienced teacher."</p>
-            <h4>— Suchanya S, BSc Computer Science</h4>
-          </div>
-          <div class="testimonial-card">
-            <p>"Excellent tutors, helped us to understand the concepts at a deeper level."</p>
-            <h4>— Anagha Jayakumar, BSc Computer Science</h4>
-          </div>
-          <div class="testimonial-card">
-            <p>"Great learning opportunity for me."</p>
-            <h4>— Rithul Sreesan, BSc Computer Science</h4>
-          </div>
-          <div class="testimonial-card">
-            <p>"Excellent AI and Python training. Highly recommend!"</p>
-            <h4>— Ganesh M, BCA</h4>
-          </div>
-          <div class="testimonial-card">
-            <p>"Excellent."</p>
-            <h4>— Soorya S, BSc Computer Science</h4>
-          </div>
-		  <div class="testimonial-card">
-            <p>"Excellent experience."</p>
-            <h4>— Abin A, BSc Computer Science</h4>
-          </div>
-		  <div class="testimonial-card">
-            <p>"Great learning opportunity to extend my knowledge. Wonderful experience!."</p>
-            <h4>— Gopika P.S., BSc Computer Science</h4>
-          </div>
-        </div>
-      </div>
+	  <!-- Right: Lottie Animation 
+        <div class="testimonials-right" data-aos="fade-left">
+          <lottie-player
+            src="speech_bubble.json"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay 
+            style="width: 200px; height: auto;">
+          </lottie-player>
+        </div> -->
+	  </div> 
+    </div>     
+  </section> 
 
-	  <button class="arrow right" id="arrowRight">→</button>
-	</div>
-  </section>
+  <section class="section contact-section" id="contact">
+  <div class="container contact-flex">
 
-  <section class="section" id="contact" data-aos="fade-up">
-    <h2 data-aos="fade-right">Contact Us</h2>
-    <form class="contact-form" action="https://getform.io/f/avrylyea" method="POST" data-aos="fade-up">
-      <input type="text" name="_gotcha" style="display:none">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <input type="hidden" name="_redirect" value="https://eduwelle.com/thanks.html">
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <!-- ✅ Left: Heading + Lottie Animation -->
+    <div class="contact-left" data-aos="fade-right">
+      <h2 class="section-title">📨 Contact Us</h2>
+      <lottie-player 
+        src="contact-us.json" 
+        background="transparent"
+        speed="1"
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
+
+    <!-- ✅ Right: Contact Form -->
+    <div class="contact-right" data-aos="fade-left">
+      <form class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -229,18 +442,49 @@
 
     AOS.init({ duration: 800, once: true, offset: 100, mirror: false });
 
-    // Dark Mode Toggle
-    const toggle = document.getElementById('darkToggle');
-    const prefersDark = localStorage.getItem('dark-mode') === 'true';
-    if (prefersDark) {
-      document.body.classList.add('dark-mode');
-      toggle.checked = true;
-    }
-    toggle.addEventListener('change', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('dark-mode', toggle.checked);
-    });
+    // Dark Mode Toggle (Lottie version)
+    document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("lottieToggle");
+  const anim = document.getElementById("darkToggleAnim");
 
+  const SUN_FRAME = 0;
+  const MOON_FRAME = 160;
+
+  // ✅ Only check saved preference
+  let isDark = localStorage.getItem('dark-mode') === 'true';
+
+  const waitForLottie = setInterval(() => {
+    if (anim && anim.getLottie) {
+      clearInterval(waitForLottie);
+      const lottieObj = anim.getLottie();
+
+      // ✅ Set theme based on saved preference
+      if (isDark) {
+        document.body.classList.add('dark-mode');
+        lottieObj.goToAndStop(MOON_FRAME, true);
+      } else {
+        document.body.classList.remove('dark-mode');
+        lottieObj.goToAndStop(SUN_FRAME, true);
+      }
+
+      // ✅ Toggle logic
+      toggle.addEventListener('click', () => {
+        isDark = !isDark;
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('dark-mode', isDark);
+
+        if (isDark) {
+          lottieObj.setDirection(1);
+          lottieObj.playSegments([SUN_FRAME, MOON_FRAME], true);
+        } else {
+          lottieObj.setDirection(-1);
+          lottieObj.playSegments([MOON_FRAME, SUN_FRAME], true);
+        }
+      });
+    }
+  }, 100);
+});
+	
     // Preloader
     window.addEventListener("load", () => {
       document.getElementById("preloader").classList.add("hidden");
@@ -261,24 +505,47 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // Logo Reveal Modal
-    const logo = document.getElementById("logoTrigger");
-    const modal = document.getElementById("logoModal");
-    const video = document.getElementById("logoVideo");
+    // Logo Reveal Modal with Dark Mode Handling
+const logos = document.querySelectorAll(".logoTrigger"); // ✅ Class used for both logos
+const modal = document.getElementById("logoModal");
+const video = document.getElementById("logoVideo");
 
-    logo.addEventListener("click", () => {
-      video.src = "logo-reveal.mp4";
-      modal.style.display = "flex";
-      video.play();
-    });
+// Show modal with correct video
+logos.forEach((logo) => {
+  logo.addEventListener("click", () => {
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    const videoSrc = isDarkMode ? "logo-reveal-dark.mp4" : "logo-reveal.mp4";
 
-    video.addEventListener("ended", () => {
-      modal.style.display = "none";
-      video.pause();
-      video.currentTime = 0;
-      video.src = ""; // Unload to prevent flicker
-    });
-	
+    video.src = videoSrc;
+    modal.style.display = "flex";
+    video.play();
+  });
+});
+
+// Hide modal when video ends
+video.addEventListener("ended", closeModal);
+
+// Hide modal on ESC key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
+
+// Hide modal when clicking outside the video
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+
+// Close function
+function closeModal() {
+  video.pause();
+  video.currentTime = 0;
+  video.src = ""; // Unload to prevent flicker
+  modal.style.display = "none";
+}
     // Scroll to top only after full load
     document.addEventListener("DOMContentLoaded", () => {
       const track = document.getElementById("testimonialTrack");
@@ -383,6 +650,24 @@
         hamburger.setAttribute('aria-expanded', 'false');
       });
     });
+	
+  // Show More Projects Toggle
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.show-more-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const grid = button.previousElementSibling;
+        const hiddenCards = grid.querySelectorAll('.project-card.extra');
+        const isExpanded = button.classList.toggle('expanded');
+
+        hiddenCards.forEach(card => {
+          card.style.display = isExpanded ? 'block' : 'none';
+        });
+
+        button.textContent = isExpanded ? 'Show Less' : 'Show More';
+      });
+    });
+  });
+	
 	
   </script>
 
